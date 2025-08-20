@@ -1,0 +1,25 @@
+#!/bin/bash
+# fake_sw_vers.sh
+# 使用现有环境变量 FAKE_OS_VERSION 和 FAKE_OS_BUILD
+
+FAKE_PRODUCT_NAME=${FAKE_PRODUCT_NAME:-macOS}
+FAKE_PRODUCT_VERSION=${FAKE_OS_VERSION:-15.4.1}
+FAKE_BUILD_VERSION=${FAKE_OS_BUILD:-24E263}
+
+case "$1" in
+  -productName)
+    echo "$FAKE_PRODUCT_NAME"
+    ;;
+  -productVersion)
+    echo "$FAKE_PRODUCT_VERSION"
+    ;;
+  -buildVersion)
+    echo "$FAKE_BUILD_VERSION"
+    ;;
+  *)
+    # 默认输出类似 sw_vers
+    echo "ProductName:    $FAKE_PRODUCT_NAME"
+    echo "ProductVersion: $FAKE_PRODUCT_VERSION"
+    echo "BuildVersion:   $FAKE_BUILD_VERSION"
+    ;;
+esac
